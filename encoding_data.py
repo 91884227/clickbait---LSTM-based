@@ -44,7 +44,7 @@ if __name__ == '__main__':
     command_word_list = list(le.classes_)
     after_replace = [ [i if i in command_word_list else "<UNK>" for i in str_] for str_ in tqdm(data)]
     after_len_selection = [i if len(i)<MAX_LEN else i[:MAX_LEN] for i in after_replace]
-    after_encode = [le.transform(i) for i in after_len_selection] 
+    after_encode = [le.transform(i) for i in tqdm(after_len_selection)] 
     
     # for json saveing
     after_int = [ list(map(int,  i)) for i in after_encode]  
