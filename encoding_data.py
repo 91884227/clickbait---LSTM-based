@@ -44,9 +44,13 @@ if __name__ == '__main__':
     command_word_list = list(le.classes_)
     after_replace = [ [i if i in command_word_list else "<UNK>" for i in str_] for str_ in tqdm(data)]
     after_len_selection = [i if len(i)<MAX_LEN else i[:MAX_LEN] for i in after_replace]
+    after_encode = [le.transform(i) for i in after_len_selection] 
+    
+    # for json saveing
+    after_int = [ list(map(int,  i)) for i in after_encode]  
 
     print("save data...")
     output_name = "%s_Encoding_%s.json" % (OUTPUT_PRE_NAME, FILENAME[:-5])
     with open('./preo_data/%s' % output_name , 'w') as outfile:
-        json.dump(after_replace, outfile)
+        json.dump(after_int, outfile)
 
