@@ -1,7 +1,5 @@
 # clickbait---LSTM-based
 
-[TOC]
-
 ## train_model.py
 ### usage
 ```
@@ -9,12 +7,12 @@ python train_model.py X_TRAIN_FILE y_TRAIN_FILE X_TEST_FILE y_TEST_FILE X_ANOMAL
 ```
 | Parameter | meaning | e.g. |
 | -------- | -------- | -------- |
-| X_TRAIN_FILE | $*$須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_train.json" |
-| y_TRAIN_FILE | $*$須放在 `./preo_data/`下 | "v5_y_normal_train.json" |
-| X_TEST_FILE | $*$須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_test.json" |
-| y_TEST_FILE |  $*$須放在 `./preo_data/`下| "v5_y_normal_test.json" |
-| X_ANOMALY_FILE | $*$須放在 `./preo_data/`下 | "V1_Encoding_v5_X_anomaly_data.json" |
-| y_ANOMALY_FILE | $*$須放在 `./preo_data/`下 | "v5_Y_anomaly_data.json" |
+| X_TRAIN_FILE | $*$ 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_train.json" |
+| y_TRAIN_FILE | $*$ 須放在 `./preo_data/`下 | "v5_y_normal_train.json" |
+| X_TEST_FILE | $*$ 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_test.json" |
+| y_TEST_FILE |  $*$ 須放在 `./preo_data/`下| "v5_y_normal_test.json" |
+| X_ANOMALY_FILE | $*$ 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_anomaly_data.json" |
+| y_ANOMALY_FILE | $*$ 須放在 `./preo_data/`下 | "v5_Y_anomaly_data.json" |
 | LIMIT | 0: 讀全部檔案 </br> 1: 讀前100筆檔案 | 1 |
 | MODEL_NAME | 可選擇</br> LSTM_model</br>LSTM_model_BI</br> GRU_model</br>GRU_model_BI| "LSTM_model_BI" |
 | INPUT_SIZE | network parameter | 1 |
@@ -93,10 +91,10 @@ python split_data_set.py FILENAME_ANOMALY FILENAME_NORMAL_1 FILENAME_NORMAL_2_1 
 
 | Parameter | meaning | e.g. |
 | -------- | -------- | -------- |
-| FILENAME_ANOMALY     | 檔案名稱</br> $*$須放在 `./preo_data/`下     | "replace_by_speical_tag_CNA_title_adjust.json"     |
-| FILENAME_NORMAL_1     | 檔案名稱</br> $*$須放在 `./preo_data/`下    | "replace_by_speical_tag_Gossip_title_20000_to_39088_adjust.json"     |
-| FILENAME_NORMAL_2_1     | 檔案名稱 </br> $*$須放在 `./preo_data/`下    | "replace_by_speical_tag_katino_data_adjust.json"     |
-| FILENAME_NORMAL_2_2     | 檔案名稱 </br> $*$須放在 `./preo_data/`下    | "replace_by_speical_tag_coco_title_category_1_to_121_MAX_1000_adjust.json"     |
+| FILENAME_ANOMALY     | 檔案名稱</br> $*$ 須放在 `./preo_data/`下     | "replace_by_speical_tag_CNA_title_adjust.json"     |
+| FILENAME_NORMAL_1     | 檔案名稱</br> $*$ 須放在 `./preo_data/`下    | "replace_by_speical_tag_Gossip_title_20000_to_39088_adjust.json"     |
+| FILENAME_NORMAL_2_1     | 檔案名稱 </br> $*$ 須放在 `./preo_data/`下    | "replace_by_speical_tag_katino_data_adjust.json"     |
+| FILENAME_NORMAL_2_2     | 檔案名稱 </br> $*$ 須放在 `./preo_data/`下    | "replace_by_speical_tag_coco_title_category_1_to_121_MAX_1000_adjust.json"     |
 | SPILT_RATE     | TESTING 的資料比例    | 0.2    |
 | NAME_FRONT    | 輸出檔案時的前綴字     | "V1"     |
 
@@ -152,8 +150,8 @@ python Replace_by_tag.py FILENAME_POS FILENAME_ws LIMIT
 
 | Parameter | meaning | e.g. |
 | -------- | -------- | -------- |
-|FILENAME_POS  | pos的檔案名稱 </br> $*$須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_POS.json"     |
-|FILENAME_ws  | ws的檔案名稱  </br> $*$須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_ws.json"    |
+|FILENAME_POS  | pos的檔案名稱 </br> $*$ 須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_POS.json"     |
+|FILENAME_ws  | ws的檔案名稱  </br> $*$ 須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_ws.json"    |
 |LIMIT| 0: 處理全部資料 </br>1: 處理前100筆    | 1  |
 
 跑完即生出 `replace_by_speical_tag_FILENAME.json` 在 `./preo_data/` 下
