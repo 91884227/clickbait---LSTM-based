@@ -1,5 +1,7 @@
 # clickbait---LSTM-based
 
+[TOC]
+
 ## train_model.py
 ### usage
 ```
@@ -25,6 +27,7 @@ python train_model.py X_TRAIN_FILE y_TRAIN_FILE X_TEST_FILE y_TEST_FILE X_ANOMAL
 | LEARNING_RATE |  | 0.01 |
 | DEVICE | GPU名稱 | "cuda:1" |
 | ID | meaning | "00000" |
+
 則可訓練以`MODEL_NAME`為架構的模型
 將模型命名為 `ID_ID.ptc`儲存在`./model_save/`下
 模型的相關資訊為 `info_ID.json`儲存在`./model_save/`下
@@ -53,6 +56,7 @@ python encoding_data.py FILENAME CLASSNAME MAX_LEN LIMIT OUTPUT_PRE_NAME
 | MAX_LEN | 超過MAX_LEN 會被CUT掉| 20 |
 | LIMIT | 0: 處理全部資料</br>1: 處理前100筆資料 | 0 |
 | OUTPUT_PRE_NAME | 輸出檔案時的前綴字 | "V1"|
+
 即可產生`OUTPUT_PRE_NAME_Encoding_FILENAME.json`的檔案在 `./preo_data/`下
 ### example
 ```
@@ -132,7 +136,9 @@ python split_data_set.py "replace_by_speical_tag_CNA_title_adjust.json" "replace
 e.g. 
 
 ws: ['台灣', '司法', '天秤', '是', '不', '是', '真的', '不', '一樣', '的', '卦', '?', '!']
+
 pos: ['Nc','Na', 'Na', 'SHI', 'D', 'SHI', 'D', 'D', 'VH','DE','Na','QUESTIONCATEGORY', 'EXCLAMATIONCATEGORY']
+
 取代完後:['Nc', '司法', '天秤', '是', '不', '是', '真的', '不', '一樣', '的', '卦', '?', '!']
  
 
@@ -146,10 +152,9 @@ python Replace_by_tag.py FILENAME_POS FILENAME_ws LIMIT
 
 | Parameter | meaning | e.g. |
 | -------- | -------- | -------- |
-|FILENAME_POS  | pos的檔案名稱     | "Gossip_title_20000_to_39088_adjust_POS.json"     |
-|FILENAME_ws  | ws的檔案名稱     | "Gossip_title_20000_to_39088_adjust_ws.json"    |
+|FILENAME_POS  | pos的檔案名稱 </br> $*$須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_POS.json"     |
+|FILENAME_ws  | ws的檔案名稱  </br> $*$須放在 `./ori_data/`下     | "Gossip_title_20000_to_39088_adjust_ws.json"    |
 |LIMIT| 0: 處理全部資料 </br>1: 處理前100筆    | 1  |
-* Rmk FILENAME_POS 和 FILENAME_ws 都是放在 `./ori_data/` 下
 
 跑完即生出 `replace_by_speical_tag_FILENAME.json` 在 `./preo_data/` 下
 
