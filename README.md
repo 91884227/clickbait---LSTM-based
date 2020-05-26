@@ -7,7 +7,7 @@ python train_model.py X_TRAIN_FILE y_TRAIN_FILE X_TEST_FILE y_TEST_FILE X_ANOMAL
 ```
 | Parameter | meaning | e.g. |
 | -------- | -------- | -------- |
-| X_TRAIN_FILE | $*$ 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_train.json" |
+| X_TRAIN_FILE | **\*** 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_train.json" |
 | y_TRAIN_FILE | $*$ 須放在 `./preo_data/`下 | "v5_y_normal_train.json" |
 | X_TEST_FILE | $*$ 須放在 `./preo_data/`下 | "V1_Encoding_v5_X_normal_test.json" |
 | y_TEST_FILE |  $*$ 須放在 `./preo_data/`下| "v5_y_normal_test.json" |
