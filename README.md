@@ -1,8 +1,42 @@
-# clickbait---LSTM-based
+---
+title: 'clickbait-LSTM-based'
+disqus: hackmd
+---
 ###### tags: `README` 
 [TOC]
-## train_model.py
-### usage
+# sentence_segmentation_class.py 
+內含 `class_sentence_segmentation` </br>
+使用方式:
+```python
+from sentence_segmentation_class import class_sentence_segmentation
+postag = class_sentence_segmentation(CUDA_VISIBLE_DEVICES = "0", GPU_MEMORY_FRACTION = 0.7)
+pos, ws = postag("韓國瑜被罷免了")
+```
+
+# Postag.py
+## usage
+```
+python Postag.py DATA_NAME ID
+```
+
+| Parameter | meaning | e.g. |
+| -------- | -------- | -------- |
+| DATA_NAME   | 需要放在 `./raw_data/` 下 | CNA_title_adjust.npy   |
+| ID   |    | CNA   |
+即可在  `./preprocess_data/` 下 輸出 </br>
+`ID_pos.json` </br>
+`ID_ws.json` 
+
+## example
+```
+python Postag.py CNA_title_adjust.npy CNA
+```
+即可在  `./preprocess_data/` 下 輸出 </br>
+`CNA_pos.json` </br>
+`CNA_ws.json` 
+
+# train_model.py
+## usage
 ```
 python train_model.py X_TRAIN_FILE y_TRAIN_FILE X_TEST_FILE y_TEST_FILE X_ANOMALY_FILE y_ANOMALY_FILE LIMIT MODEL_NAME INPUT_SIZE NUM_LAYERS HIDDEN_SIZE DIM_1 DIM_2 BS EPOCH LEARNING_RATE DEVICE ID
 ```
@@ -33,7 +67,7 @@ python train_model.py X_TRAIN_FILE y_TRAIN_FILE X_TEST_FILE y_TEST_FILE X_ANOMAL
 
 
 
-### example
+## example
 ```
 python train_model.py V1_Encoding_v5_X_normal_train.json v5_y_normal_train.json V1_Encoding_v5_X_normal_test.json v5_y_normal_test.json V1_Encoding_v5_X_anomaly_data.json v5_Y_anomaly_data.json 1 LSTM_model_BI 1 1 500 300 50 2 10 0.01 cuda:1 00000
 ```
@@ -41,10 +75,10 @@ python train_model.py V1_Encoding_v5_X_normal_train.json v5_y_normal_train.json 
 將模型命名為 `ID_00000.ptc`儲存在`./model_save/`下
 模型的相關資訊為 `info_00000.json`儲存在`./model_save/`下
 
-## encoding_data.py
+# encoding_data.py
 依據 `CLASSNAME` 將資料編碼 
 * Rmk 沒出現用 \<UNK\> 來表示
-### usage
+## usage
 ```
 python encoding_data.py FILENAME CLASSNAME MAX_LEN LIMIT OUTPUT_PRE_NAME 
 ```
@@ -57,14 +91,14 @@ python encoding_data.py FILENAME CLASSNAME MAX_LEN LIMIT OUTPUT_PRE_NAME
 | OUTPUT_PRE_NAME | 輸出檔案時的前綴字 | V1|
 
 即可產生`OUTPUT_PRE_NAME_Encoding_FILENAME.json`的檔案在 `./preo_data/`下
-### example
+## example
 ```
 python encoding_data.py v5_X_normal_train.json v5_Encoding_function.pkl 20 0 V1 
 ```
 即可產生`V1_Encoding_v5_X_normal_train.json`的檔案在 `./preo_data/`下
 
-## create_encoding_class.py
-### usage
+# create_encoding_class.py
+## usage
 ```
 python create_encoding_class.py FILENAME MOST_COMMON_WORD SAVE_PRE_NAME 
 ```
@@ -74,17 +108,17 @@ python create_encoding_class.py FILENAME MOST_COMMON_WORD SAVE_PRE_NAME
 | MOST_COMMON_WORD     | 取頻率前MOST_COMMON_WORD的字</br> 其他視為Unknown    | 10000 |
 | SAVE_PRE_NAME      |  輸出檔案時的前綴字     | v1 |
 即可產生`SAVE_PRE_NAME_Encoding_function.pkl`的檔案在 `./preo_data/`下
-### example
+## example
 ```
 python create_encoding_class.py v5_X_normal_train.json 10000 v1
 ```
 即可產生`v1_Encoding_function.pkl`的檔案在 `./preo_data/`下
 
 
-## split_data_set.py
+# split_data_set.py
 將 raw data 分割成 training testing 以及 normal
 ![](https://i.imgur.com/q3C6mrA.png)
-### usage
+## usage
 ```
 python split_data_set.py FILENAME_ANOMALY FILENAME_NORMAL_1 FILENAME_NORMAL_2_1 FILENAME_NORMAL_2_2 SPILT_RATE NAME_FRONT
 ```
@@ -112,7 +146,7 @@ python split_data_set.py FILENAME_ANOMALY FILENAME_NORMAL_1 FILENAME_NORMAL_2_1 
 | NAME_FRONT_Y_normal_test.json   | 
 
 
-### example
+## example
 ```
 python split_data_set.py replace_by_speical_tag_CNA_title_adjust.json replace_by_speical_tag_Gossip_title_20000_to_39088_adjust.json replace_by_speical_tag_katino_data_adjust.json replace_by_speical_tag_coco_title_category_1_to_121_MAX_1000_adjust.json 0.2 v1
 ```
@@ -129,8 +163,8 @@ python split_data_set.py replace_by_speical_tag_CNA_title_adjust.json replace_by
 
 
 
-## Replace_by_tag.py
-### What this program do 
+# Replace_by_tag.py
+## What this program do 
 將 [POS Tags](https://github.com/ckiplab/ckiptagger/wiki/POS-Tags) 為 ["Nb", "Neu", "Nc", "Nd", "Nf"] 做替代</br>
 
 e.g. </br>
@@ -143,7 +177,7 @@ pos: ['Nc','Na', 'Na', 'SHI', 'D', 'SHI', 'D', 'D', 'VH','DE','Na','QUESTIONCATE
 
 
 
-### usage
+## usage
 ```
 python Replace_by_tag.py FILENAME_POS FILENAME_ws LIMIT
 ```
@@ -157,7 +191,7 @@ python Replace_by_tag.py FILENAME_POS FILENAME_ws LIMIT
 
 跑完即生出 `replace_by_speical_tag_FILENAME.json` 在 `./preo_data/` 下
 
-### example
+## example
 ```
 python Replace_by_tag.py Gossip_title_20000_to_39088_adjust_POS.json Gossip_title_20000_to_39088_adjust_ws.json 1
 ```
