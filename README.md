@@ -4,6 +4,40 @@ disqus: hackmd
 ---
 ###### tags: `README` 
 [TOC]
+# replace_by_tag_class.py
+內含 `class_replace_by_tag` </br>
+使用方式:
+```python
+from replace_by_tag_class import class_replace_by_tag
+REPLACE_TAG_FILE = "replace_tag.txt"
+test = class_replace_by_tag(REPLACE_TAG_FILE )
+pos = ['武漢', '肺炎', '23日', '零', '確診', ' ', '連', '41', '天', '無', '本土', '病例']
+ws = ['Nc', 'Na', 'Nd', 'Neu','VD','WHITESPACE','Cbb','Neu','Nf','VJ','Nc','Na']
+test(pos, ws)
+```
+
+# New_Replace_by_tag.py
+## usage
+```
+python New_Replace_by_tag.py TAG_LIST POS_FILE WS_FILE ID
+```
+| Parameter | meaning | e.g. |
+| -------- | -------- | -------- |
+|TAG_LIST   | 需要放在 `./preprocess_data/` 下 | replace_tag.txt   |
+| POS_FILE   |   需要放在 `./preprocess_data/` 下 | CNA_pos.json   |
+| WS_FILE  |  需要放在 `./preprocess_data/` 下  | CNA_ws.json   |
+| ID   |    | CNA_after_replace_tag  |
+即可在  `./preprocess_data/` 下 輸出 </br>
+`ID.json` </br>
+
+## example
+```
+python New_Replace_by_tag.py replace_tag.txt CNA_pos.json CNA_ws.json  CNA_after_replace_tag
+```
+即可在  `./preprocess_data/` 下 輸出 </br>
+`CNA_after_replace_tag.json`
+
+
 # sentence_segmentation_class.py 
 內含 `class_sentence_segmentation` </br>
 使用方式:
